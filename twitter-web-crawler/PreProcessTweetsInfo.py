@@ -6,4 +6,3 @@ with open('python.json', 'r') as f:
         tweet = json.loads(line)
         tokens = preprocess(tweet['text'])
         print tokens
-
