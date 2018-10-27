@@ -1,6 +1,6 @@
 import tweepy
 from tweepy import Stream, OAuthHandler
-from HashtagListener import HashtagListener
+from twitter_helper import HashtagListener
 
 #this class search for a hashtag and tracks the stream over twitter and save on python.json
 
