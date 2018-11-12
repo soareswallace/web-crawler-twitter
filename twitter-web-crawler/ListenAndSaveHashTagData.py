@@ -14,8 +14,7 @@ auth.set_access_token(access_token, access_token_secret)
 
 api = tweepy.API(auth)
 
-hashtag = raw_input("Name the hashtag")
+hashtag = input("Name the hashtag -> ")
 
 twitter_stream = Stream(auth, HashtagListener())
 twitter_stream.filter(track=[hashtag])
-

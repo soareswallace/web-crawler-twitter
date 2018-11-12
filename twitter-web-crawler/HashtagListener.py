@@ -1,6 +1,5 @@
 from tweepy.streaming import StreamListener
 
-
 class HashtagListener(StreamListener):
 
     def on_data(self, raw_data):
