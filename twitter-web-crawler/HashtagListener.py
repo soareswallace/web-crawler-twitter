@@ -4,7 +4,7 @@ class HashtagListener(StreamListener):
 
     def on_data(self, raw_data):
         try:
-            with open('python.json', 'a') as f:
+            with open('beginARelationshipIn4Words.json', 'a') as f:
                 f.write(raw_data)
                 return True
         except BaseException as e:

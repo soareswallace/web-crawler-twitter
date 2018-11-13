@@ -8,8 +8,9 @@ import string
 import sys
 
 punctuation = list(string.punctuation)
-stop = stopwords.words('english') + punctuation + ['RT', 'via', u"\u2026", '🖥', '🕰', '🎮', '💎', u"\u0020"]
+stop = stopwords.words('english') + punctuation + ['#BeginARelationshipIn4Words', u"\u2019", u'\u200b', u"\u0027",  u"\u201D", u"\u201C", 'RT', 'via', u"\u2026", '🖥', '🕰', '🎮', '💎', u"\u0020"]
 
+# fname = '../beginARelationshipIn4Words.json'
 fname = '../python.json'
 def count_them_all():
     with open(fname, 'r') as f:
@@ -51,12 +52,12 @@ def detect_co_ocurrences():
                         if term not in stop 
                         and not term.startswith(('#', '@'))]
         
-            # Build co-occurrence matrix
-            for i in range(len(terms_only)-1):            
-                for j in range(i+1, len(terms_only)):
-                    w1, w2 = sorted([terms_only[i], terms_only[j]])                
-                    if w1 != w2:
-                        com[w1][w2] += 1
+    # Build co-occurrence matrix
+    for i in range(len(terms_only)-1):            
+        for j in range(i+1, len(terms_only)):
+            w1, w2 = sorted([terms_only[i], terms_only[j]])                
+            if w1 != w2:
+                com[w1][w2] += 1
     com_max = []
     for t1 in com:
         t1_max_terms = sorted(com[t1].items(), key=operator.itemgetter(1), reverse=True)[:30]
