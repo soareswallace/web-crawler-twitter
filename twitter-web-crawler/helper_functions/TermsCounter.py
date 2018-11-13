@@ -59,7 +59,7 @@ def detect_co_ocurrences():
                         com[w1][w2] += 1
     com_max = []
     for t1 in com:
-        t1_max_terms = sorted(com[t1].items(), key=operator.itemgetter(1), reverse=True)[:5]
+        t1_max_terms = sorted(com[t1].items(), key=operator.itemgetter(1), reverse=True)[:30]
         for t2, t2_count in t1_max_terms:
             com_max.append(((t1, t2, t2_count)))
             # Get the most frequent co-occurrences
