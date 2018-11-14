@@ -8,10 +8,10 @@ import string
 import sys
 
 punctuation = list(string.punctuation)
-stop = stopwords.words('english') + punctuation + ['#BeginARelationshipIn4Words', u"\u2019", u'\u200b', u"\u0027",  u"\u201D", u"\u201C", 'RT', 'via', u"\u2026", '🖥', '🕰', '🎮', '💎', u"\u0020"]
+stop = stopwords.words('english') + punctuation + ['#BeginARelationshipIn4Words', u"\uFE0F", u"\u2019", u'\u200b', u"\u0027",  u"\u201D", u"\u201C", 'RT', 'via', u"\u2026", '🖥', '🕰', '🎮', '💎', u"\u0020"]
 
-# fname = '../beginARelationshipIn4Words.json'
-fname = '../python.json'
+fname = '../beginARelationshipIn4Words.json'
+# fname = '../python.json'
 def count_them_all():
     with open(fname, 'r') as f:
         count_stop = Counter()
@@ -26,7 +26,7 @@ def count_them_all():
             terms_only = [term for term in preprocess(tweet['text']) 
                 if term not in stop and
                 not term.startswith(('#', '@'))]
-            terms_bigram = bigrams(terms_hash)
+            terms_bigram = bigrams(terms_only)
                 # mind the ((double brackets))
                 # startswith() takes a tuple (not a list) if 
                 # we pass a list of inputs
@@ -40,7 +40,7 @@ def count_them_all():
         print ("Stop words -> " + str(count_stop.most_common(30)))
         # print ("Hashtags -> " + str(count_hash.most_common(30)))
         # print ("Terms only -> " + str(count_only.most_common(30)))
-        # print ("Biagrams -> " + str(count_biagram.most_common(30)))
+        print ("Biagrams -> " + str(count_biagram.most_common(30)))
         
 def detect_co_ocurrences():
     com = defaultdict(lambda : defaultdict(int))
@@ -81,6 +81,6 @@ def search_co_ocurrency_specific():
         print("Co-occurrence for %s:" % search_word)
         print(count_search.most_common(20))
 
-# count_them_all()
-detect_co_ocurrences()
+count_them_all()
+# detect_co_ocurrences()
 # search_co_ocurrency_specific()
